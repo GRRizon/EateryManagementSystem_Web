@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About - Eatery Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header img {
+      width: 120px;
+      height: auto;
+    }
+
+    nav {
+      margin-top: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-top: 20px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    main p {
+      font-size: 20px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .image-gallery img {
+      width: 45%;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .image-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .founder-section {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .founder-section img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .founder-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .founder-section p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+
+    footer h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 15px;
+    }
+
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ffcc00;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .image-gallery img {
+        width: 90%;
+      }
+
+      header h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="Eatery Logo.png" alt="Eatery Logo">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="order.html">Order</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <h1>About Us</h1>
+  </header>
+
+  <main>
+    <p>
+      <strong>Founded in 2025</strong>, Eatery is a cozy spot where good food meets great company.
+      We believe in fresh ingredients, friendly service, and creating moments that matter.
+    </p>
+
+    <div class="image-gallery">
+      <img src="Interior 1.jpg" alt="Eatery Interior">
+      <img src="Interior 2.jpg" alt="Eatery Interior">
+    </div>
+
+    <div class="founder-section">
+      <img src="Founder.jpg" alt="Founder Image">
+      <h2>MD. Golam Rabbani</h2>
+      <p>
+        MD. Golam Rabbani, the visionary behind Eatery, started this journey with a passion for great food and excellent customer service.
+        His mission is to create a place where people can enjoy fresh, high-quality meals in a warm and welcoming environment.
+      </p>
+    </div>
+  </main>
+
+  <footer>
+        <h1>Follow Us</h1>
+        <ul>
+            <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+        </ul>
+        <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
+
+</body>
+
+</html>

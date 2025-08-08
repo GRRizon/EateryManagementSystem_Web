@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Place an Order - Eatery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffcc00;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header img {
+      width: 120px;
+      height: auto;
+    }
+	
+	 header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-top: 20px;
+    }
+
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #333;
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-top: 20px;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 28px;
+      border-bottom: 2px solid #ffcc00;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    textarea,
+    select,
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    fieldset {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    legend {
+      font-weight: bold;
+      font-size: 20px;
+      color: #555;
+    }
+
+    .product-item {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .product-item label {
+      flex: 1;
+    }
+
+    .product-item input[type="number"] {
+      width: 80px;
+      margin-left: 15px;
+    }
+
+    button {
+      display: block;
+      background-color: #ffcc00;
+      border: none;
+      color: #333;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 20px auto 0;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #e6b800;
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 40px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 10px;
+    }
+
+    footer ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    footer ul li a:hover {
+      color: #ffcc00;
+    }
+
+    footer p {
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      .product-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .product-item input[type="number"] {
+        margin: 10px 0 0 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="Eatery Logo.png" alt="Eatery Logo" />
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <h1>Place Your Order</h1>
+  </header>
+
+  <main>
+    <h2>Customer Information</h2>
+    <form action="Order_Confirmed.html" method="get" class="order-form">
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" />
+
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" rows="3" required></textarea>
+
+      <h2>Order Information</h2>
+
+      <fieldset>
+        <legend>Select Product & Quantity:</legend>
+
+        <!-- Product Items -->
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Espresso" /> Espresso - $3.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Latte" /> Latte - $4.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Cappuccino" /> Cappuccino - $4.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+		
+		<div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Volcanica Coffee" /> Volcanica Coffee - $7.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Green Tea" /> Green Tea - $3.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Black Tea" /> Black Tea - $3.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Herbal Infusion" /> Herbal Infusion - $3.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Milk Tea" /> Milk Tea - $2.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Classic Club" /> Classic Club - $7.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Veggie Wrap" /> Veggie Wrap - $6.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Grilled Cheese" /> Grilled Cheese - $5.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+		
+		<div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Muffaletta Sandwiches" /> Muffaletta Sandwiches - $4.70</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Chocolate Fudge Cake" /> Chocolate Fudge Cake - $5.50</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Carrot Cake" /> Carrot Cake - $5.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Blueberry Muffin" /> Blueberry Muffin - $3.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+
+        <div class="product-item">
+          <label><input type="checkbox" name="products[]" value="Kalb-el-lou Cake" /> Kalb-el-lou - $2.00</label>
+          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
+        </div>
+      </fieldset>
+
+      <label for="payment">Payment Method:</label>
+      <select id="payment" name="payment" required>
+        <option value="">-- Select payment method --</option>
+        <option value="Card">Credit/Debit Card</option>
+        <option value="Bkash">Bkash</option>
+        <option value="Nagad">Nagad</option>
+        <option value="Rocket">Rocket</option>
+        <option value="Cash">Cash on Delivery</option>
+      </select>
+
+      <!-- Submit button -->
+      <button type="submit">Place Order</button>
+    </form>
+  </main>
+
+  <footer>
+    <h1>Follow Us</h1>
+    <ul>
+      <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
+      <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
+      <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+    </ul>
+    <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    // Enable quantity input only when product checkbox is checked
+    document.querySelectorAll('.product-item').forEach(item => {
+      const checkbox = item.querySelector('input[type="checkbox"]');
+      const quantityInput = item.querySelector('input[type="number"]');
+
+      // Initialize quantity input disabled if checkbox not checked
+      quantityInput.disabled = !checkbox.checked;
+
+      checkbox.addEventListener('change', () => {
+        quantityInput.disabled = !checkbox.checked;
+        if (!checkbox.checked) {
+          quantityInput.value = '';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

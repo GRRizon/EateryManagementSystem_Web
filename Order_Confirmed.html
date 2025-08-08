@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Order Confirmation - Eatery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #ffcc00;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header img {
+      width: 120px;
+      height: auto;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-top: 20px;
+    }
+
+    main {
+      flex: 1;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .confirmation-message {
+      font-size: 24px;
+      color: green;
+      margin-bottom: 20px;
+    }
+
+    .order-summary {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .return-button {
+      background-color: #ffcc00;
+      border: none;
+      color: #333;
+      padding: 14px 30px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .return-button:hover {
+      background-color: #e6b800;
+    }
+
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 32px;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      main {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <img src="Eatery Logo.png" alt="Eatery Logo" />
+    <h1>Order Confirmation</h1>
+  </header>
+
+  <main>
+    <div class="confirmation-message">
+      🎉 Thank you! Your order has been successfully placed.
+    </div>
+
+    <div class="order-summary" id="order-summary">
+      <!-- Order details will be injected here by JavaScript -->
+    </div>
+
+    <a href="index.html" class="return-button">Return to Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Eatery Management System</p>
+  </footer>
+
+  <script>
+    const prices = {
+      "Espresso": 3.00,
+      "Latte": 4.50,
+      "Cappuccino": 4.50,
+	  "Volcanica Coffee": 7.50,
+      "Green Tea": 3.00,
+      "Black Tea": 3.00,
+      "Herbal Infusion": 3.50,
+      "Milk Tea": 2.50,
+      "Classic Club": 7.50,
+      "Veggie Wrap": 6.50,
+      "Grilled Cheese": 5.00,
+	  "Muffaletta Sandwiches": 4.70,
+      "Chocolate Fudge Cake": 5.50,
+      "Carrot Cake": 5.00,
+      "Blueberry Muffin": 3.00,
+      "Kalb-el-lou Cake": 2.00
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name') || "N/A";
+    const products = params.getAll('products[]');  // For multiple products
+    const quantities = params.getAll('quantities[]').map(q => parseInt(q) || 0);
+    const payment = params.get('payment') || "N/A";
+
+    let orderHtml = "";
+
+    // Calculate total and show each selected product with qty and price
+    let grandTotal = 0;
+    if (products.length === 0) {
+      orderHtml = "<p>No products were ordered.</p>";
+    } else {
+      orderHtml += `<p><strong>Customer Name:</strong> ${name}</p>`;
+      orderHtml += `<p><strong>Payment Method:</strong> ${payment}</p>`;
+      orderHtml += "<h3>Order Details:</h3><ul>";
+      products.forEach((product, index) => {
+        const qty = quantities[index] || 0;
+        if (qty > 0) {
+          const price = prices[product] || 0;
+          const total = price * qty;
+          grandTotal += total;
+          orderHtml += `<li>${product} - Quantity: ${qty} @ $${price.toFixed(2)} each = $${total.toFixed(2)}</li>`;
+        }
+      });
+      orderHtml += "</ul>";
+      orderHtml += `<p><strong>Total Bill:</strong> $${grandTotal.toFixed(2)}</p>`;
+    }
+
+    document.getElementById("order-summary").innerHTML = orderHtml;
+  </script>
+
+</body>
+
+</html>

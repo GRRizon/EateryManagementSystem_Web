@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Eatery Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --yellow: #f1c40f;
+      --dark: #2c3e50;
+      --light: #ffffff;
+      --gray: #f4f4f4;
+      --black: #1c1c1c;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--gray);
+      color: var(--dark);
+    }
+
+    header {
+      background-color: var(--yellow);
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header img {
+      width: 60px;
+      vertical-align: middle;
+    }
+
+    header h1 {
+      display: inline-block;
+      font-family: 'Playfair Display', serif;
+      margin: 0 10px;
+      font-size: 42px;
+      vertical-align: middle;
+    }
+
+    header p {
+      margin: 5px 0 0;
+
+      font-size: 18px;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--dark);
+      margin: 0 12px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s, color 0.3s;
+      padding: 6px 12px;
+      border-radius: 5px;
+    }
+
+    nav a:hover {
+      background-color: var(--dark);
+      color: var(--light);
+    }
+
+    main {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: var(--light);
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 26px;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 20px;
+      color: var(--dark);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    input:focus {
+      border-color: var(--yellow);
+      outline: none;
+    }
+
+    button {
+      padding: 12px;
+      background-color: var(--yellow);
+      border: none;
+      color: var(--dark);
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #d4ac0d;
+    }
+
+    .error-message {
+      color: red;
+      text-align: center;
+      margin-top: -10px;
+      margin-bottom: 15px;
+      display: none;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .signup-link a {
+      color: var(--yellow);
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: var(--black);
+      color: var(--light);
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 60px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--light);
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    footer a:hover {
+      color: var(--yellow);
+    }
+
+    footer p {
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 8px 0;
+      }
+
+      main {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="Eatery Logo.png" alt="Eatery Logo" />
+    <h1>Eatery Management</h1>
+    <p>Simplifying great dining, effortlessly.</p>
+  </header>
+
+  <main>
+    <h2>Login</h2>
+    <form onsubmit="return authenticateUser(event)">
+      <label for="username">Username</label>
+      <input type="text" id="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required />
+
+      <p class="error-message" id="error-message">Invalid username or password</p>
+
+      <button type="submit">Login</button>
+
+      <div class="signup-link">
+        Don't have an account? <a href="SingUp.html">Sign up</a>
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <h1>Follow Us</h1>
+    <ul>
+      <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
+      <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
+      <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+    </ul>
+    <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function authenticateUser(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMessage = document.getElementById("error-message");
+
+      // Replace this with actual server/database auth logic
+      if (username === "Rabbani" && password === "golam1234") {
+        window.location.href = "index.html";
+      } else {
+        errorMessage.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Eatery Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffcc00;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header img {
+            width: 120px;
+            height: auto;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin: 10px 0;
+        }
+
+        header p {
+            font-size: 18px;
+            margin: 0 20px 30px;
+            line-height: 1.5;
+        }
+
+        .highlight h3 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .card img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 15px;
+        }
+
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        footer ul li a:hover {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="Eatery Logo.png" alt="Eatery Logo">
+        <h1>Welcome to Eatery</h1>
+        <p>Fresh coffee, tasty food, and warm vibes await you.</p>
+
+        <!-- Bootstrap Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="menu.html">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="order.html">Order</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="highlight container my-5">
+            <h3>Our Specialties</h3>
+            <div class="row g-4">
+
+                <!-- Coffee -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 text-center p-3 shadow-sm">
+                        <h4>Fresh Brewed Coffee</h4>
+                        <a href="order.html"><img src="Espresso coffee.jpg" alt="Espresso Coffee" class="mb-3"></a>
+                        <a href="order.html"><img src="Latte coffee.jpg" alt="Latte Coffee" class="mb-3"></a>
+                        <a href="order.html"><img src="Cappuccino coffee.jpg" alt="Cappuccino Coffee" class="mb-3"></a>
+						<a href="order.html"><img src="Jamaican blue mountain coffee.jpg" alt="Volcanica Coffee, Jamaica" class="mb-3"></a>
+                    </div>
+                </div>
+
+                <!-- Tea -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 text-center p-3 shadow-sm">
+                        <h4>Assorted Teas</h4>
+                        <a href="order.html"><img src="Green tea.jpg" alt="Green Tea" class="mb-3"></a>
+                        <a href="order.html"><img src="Black tea.jpeg" alt="Black Tea" class="mb-3"></a>
+                        <a href="order.html"><img src="Herbal tea.jpg" alt="Herbal Tea" class="mb-3"></a>
+                        <a href="order.html"><img src="MilkTea.jpg" alt="Milk Tea" class="mb-3"></a>
+                    </div>
+                </div>
+
+                <!-- Sandwiches -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 text-center p-3 shadow-sm">
+                        <h4>Gourmet Sandwiches</h4>
+                        <a href="order.html"><img src="Sandwich hum.jpg" alt="Ham Sandwich" class="mb-3"></a>
+                        <a href="order.html"><img src="Veg Sandwiche.jpg" alt="Vegetarian Sandwich" class="mb-3"></a>
+                        <a href="order.html"><img src="Grilled Sandwiche.jpg" alt="Grilled Sandwich" class="mb-3"></a>
+						<a href="order.html"><img src="Muffaletta-sandwiches.jpg" alt="Muffaletta Sandwiches" class="mb-3"></a>
+                    </div>
+                </div>
+
+                <!-- Cakes -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="card h-100 text-center p-3 shadow-sm">
+                        <h4>Cakes & Pastries</h4>
+                        <a href="order.html"><img src="Cake home.jpg" alt="Cake" class="mb-3"></a>
+                        <a href="order.html"><img src="Carrot cake.jpg" alt="Carrot Cake" class="mb-3"></a>
+                        <a href="order.html"><img src="Blueberry Muffin Cake.jpg" alt="Blueberry Muffin Cake" class="mb-3"></a>
+                        <a href="order.html"><img src="Kalb-el-louz.jpg" alt="Kalb-el-louz Cake" class="mb-3"></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <h1>Follow Us</h1>
+        <ul>
+            <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+        </ul>
+        <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
+
+</body>
+
+</html>
