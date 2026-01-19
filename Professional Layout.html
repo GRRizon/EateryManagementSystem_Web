@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Eatery Management System</title>
+    
+    <!-- 1. THIS ADDS THE LOGO TO THE BROWSER TAB -->
+    <link rel="icon" type="image/png" href="Eatery Logo.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        eatery: {
+                            yellow: '#f1c40f', 
+                            yellowHover: '#d4ac0d',
+                            header: '#ffcc00', 
+                            dark: '#2c3e50',
+                            light: '#ffffff',
+                            gray: '#f4f4f4', 
+                            black: '#333333', 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                
+                <!-- 2. THIS IS THE VISIBLE LOGO BESIDE THE TITLE -->
+                <a href="index.html" class="flex items-center gap-3 cursor-pointer group hover:opacity-95 transition-opacity">
+                    <img src="Eatery Logo.png" alt="Eatery Logo" class="w-12 h-auto" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                    <div class="flex flex-col">
+                        <h1 class="font-bold text-2xl font-serif leading-none tracking-wide text-eatery-black">Eatery</h1>
+                        <p class="text-xs font-medium opacity-80 mt-1 text-eatery-black group-hover:opacity-100">Fresh coffee, tasty food.</p>
+                    </div>
+                </a>
+
+                <!-- Actions -->
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="LogIn.html" class="bg-eatery-black text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors shadow-lg">Log In</a>
+                    <a href="SingUp.html" class="bg-white text-eatery-black px-5 py-2 rounded-lg text-sm font-bold hover:bg-gray-100 transition-colors shadow-lg border border-eatery-black">Sign Up</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden p-2">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-eatery-header border-t border-black/10 p-4 space-y-2">
+            <a href="index.html" class="block px-4 py-2 font-bold bg-black/10 rounded">Home</a>
+            <a href="menu.html" class="block px-4 py-2 font-bold hover:bg-black/5 rounded">Menu</a>
+            <a href="Order.html" class="block px-4 py-2 font-bold hover:bg-black/5 rounded">Order</a>
+            <a href="about.html" class="block px-4 py-2 font-bold hover:bg-black/5 rounded">About</a>
+            <a href="contact.html" class="block px-4 py-2 font-bold hover:bg-black/5 rounded">Contact</a>
+            <div class="flex flex-col gap-2 mt-4">
+                <a href="LogIn.html" class="block px-4 py-2 font-bold bg-eatery-black text-white rounded text-center">Log In</a>
+                <a href="SingUp.html" class="block px-4 py-2 font-bold bg-white text-eatery-black rounded text-center border border-eatery-black">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero / Highlights -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex flex-col items-center justify-center">
+        
+        <!-- Marketing Banner (Updated) -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl md:text-5xl font-bold font-serif mb-4">Welcome to Eatery</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg mb-8">To order our delicious food and drinks, please log in or sign up.</p>
+            <div class="flex gap-4 justify-center">
+                <a href="LogIn.html" class="bg-eatery-yellow text-eatery-black font-bold px-8 py-4 rounded-lg hover:bg-eatery-yellowHover transition-colors w-fit shadow-lg transform hover:-translate-y-1">Log In to Order</a>
+                <a href="SingUp.html" class="bg-eatery-dark text-white font-bold px-8 py-4 rounded-lg hover:bg-gray-800 transition-colors w-fit shadow-lg transform hover:-translate-y-1">Sign Up Now</a>
+            </div>
+        </div>
+
+        <div class="w-full max-w-5xl">
+            <h3 class="text-3xl font-bold font-serif text-center mb-10">Our Weekly Specials</h3>
+            
+            <!-- Carousel Container -->
+            <div class="relative w-full overflow-hidden rounded-2xl shadow-2xl bg-white" id="carousel">
+                <!-- Carousel Items -->
+                <div class="flex transition-transform duration-500 ease-in-out items-center" id="carousel-track">
+                    <!-- Wednesday Offer -->
+                    <div class="min-w-full relative">
+                        <img src="Wednesday Offer.jpg" alt="Wednesday Offer" class="w-full h-auto block">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-eatery-dark/90 to-transparent p-6 md:p-8 text-white">
+                            <h4 class="text-2xl md:text-3xl font-bold font-serif mb-1 md:mb-2">Wednesday Wonder</h4>
+                            <p class="text-base md:text-lg">Get a discount on our special Wednesday combos!</p>
+                        </div>
+                    </div>
+                    <!-- Friday Offer -->
+                    <div class="min-w-full relative">
+                        <img src="Friday Offer.jpg" alt="Friday Offer" class="w-full h-auto block">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-eatery-dark/90 to-transparent p-6 md:p-8 text-white">
+                            <h4 class="text-2xl md:text-3xl font-bold font-serif mb-1 md:mb-2">Friday Feast</h4>
+                            <p class="text-base md:text-lg">Start your weekend right with our Friday specials.</p>
+                        </div>
+                    </div>
+                    <!-- Saturday Offer -->
+                    <div class="min-w-full relative">
+                        <img src="SaturdayOffer.jpg" alt="Saturday Offer" class="w-full h-auto block">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-eatery-dark/90 to-transparent p-6 md:p-8 text-white">
+                            <h4 class="text-2xl md:text-3xl font-bold font-serif mb-1 md:mb-2">Saturday Special</h4>
+                            <p class="text-base md:text-lg">The ultimate weekend treat for you and your friends.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-colors" onclick="prevSlide()">
+                    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+                </button>
+                <button class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full backdrop-blur-sm transition-colors" onclick="nextSlide()">
+                    <i data-lucide="chevron-right" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center">
+        <h1 class="text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
+        </ul>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Carousel Logic
+        const track = document.getElementById('carousel-track');
+        let currentSlide = 0;
+        const totalSlides = track.children.length;
+
+        function updateCarousel() {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Auto-play
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html>
