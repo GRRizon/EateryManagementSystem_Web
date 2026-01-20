@@ -1,270 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Menu - Eatery Management System</title>
-  
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #ffcc00;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    header img {
-      width: 120px;
-      height: auto;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-top: 20px;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .menu-category {
-      background-color: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .menu-category:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-    }
-
-    .menu-category h3 {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 20px;
-      color: #444;
-    }
-
-    .menu-item {
-      border-bottom: 1px solid #ddd;
-      padding: 15px 0;
-    }
-
-    .menu-item:last-child {
-      border-bottom: none;
-    }
-
-    .menu-item h4 {
-      font-size: 24px;
-      margin: 0 0 5px 0;
-      color: #222;
-    }
-
-    .menu-item p {
-      margin: 0;
-      font-size: 16px;
-      color: #666;
-    }
-
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 40px;
-    }
-
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 15px;
-    }
-
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-
-    footer ul li a:hover {
-      color: #ffcc00;
-    }
-
-    footer p {
-      font-size: 14px;
-      margin: 0;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 32px;
-      }
-
-      .menu-category h3 {
-        font-size: 26px;
-      }
-
-      .menu-item h4 {
-        font-size: 20px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Eatery Management System</title>
+    <link rel="icon" type="image/png" href="assets/Eatery Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { eatery: { yellow: '#f1c40f', yellowHover: '#d4ac0d', header: '#ffcc00', black: '#333333', gray: '#f4f4f4' } }, fontFamily: { sans: ['Roboto'], serif: ['Playfair Display'] } }
+            }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen">
 
-<body>
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="assets/Eatery Logo.png" alt="Logo" class="w-12" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                <h1 class="font-bold text-2xl font-serif">Eatery Menu</h1>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Home</a>
+                    <a href="menu.html" class="px-3 py-2 font-bold rounded bg-black/10 text-white">Menu</a>
+                    <a href="Order.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Order</a>
+                    <a href="about.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">About</a>
+                    <a href="contact.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Contact</a>
+                </nav>
+            </div>
 
-  <header>
-    <img src="Eatery Logo.png" alt="Eatery Logo" />
-    
-    <!-- Bootstrap Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
-      <div class="container justify-content-center">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-          <ul class="navbar-nav gap-3">
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-dark" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-dark" href="order.html">Order</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-dark" href="about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-dark" href="contact.html">Contact</a>
-            </li>
-          </ul>
+            <button onclick="document.getElementById('mMenu').classList.toggle('hidden')" class="md:hidden"><i data-lucide="menu"></i></button>
         </div>
-      </div>
-    </nav>
+        
+        <div id="mMenu" class="hidden md:hidden bg-eatery-header px-4 pb-4 border-t border-black/10">
+            <a href="index.html" class="block py-2 font-bold">Home</a>
+            <a href="menu.html" class="block py-2 font-bold bg-black/10 rounded px-2">Menu</a>
+            <a href="Order.html" class="block py-2 font-bold">Order</a>
+            <a href="about.html" class="block py-2 font-bold">About</a>
+            <a href="contact.html" class="block py-2 font-bold">Contact</a>
+            <a href="Professional Layout.html" class="block py-2 font-bold text-red-700 border-t border-black/10 mt-2">Log Out</a>
+        </div>
+    </header>
 
-    <h1>Eatery Menu</h1>
-  </header>
+    <main class="max-w-6xl mx-auto px-4 py-10 w-full"> <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold font-serif mb-2">Our Selection</h2>
+            <p class="text-gray-600">Delicious items prepared just for you.</p>
+        </div>
 
-  <main>
-    <div class="menu">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="md:col-span-2 bg-white p-6 rounded-xl shadow-md border-2 border-eatery-yellow hover:shadow-xl transition-shadow relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-eatery-yellow text-eatery-black font-bold text-xs px-6 py-2 rounded-bl-xl shadow-md z-10">HOT DEALS</div>
+                <h3 class="text-3xl font-serif font-bold mb-8 text-purple-700 flex items-center gap-3 border-b pb-4">
+                    <i data-lucide="star" class="fill-current w-8 h-8"></i> Weekly Specials
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="group flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="h-80 w-full relative overflow-hidden">
+                            <img src="assets/Wednesday Offer.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Wednesday Offer" onerror="this.src='https://placehold.co/400x600?text=Wednesday+Offer'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="p-5 text-center flex-grow flex flex-col justify-center bg-gray-50 group-hover:bg-white transition-colors">
+                            <h4 class="font-bold text-xl font-serif text-eatery-dark mb-1">Wednesday Wonder</h4>
+                            <p class="text-sm text-gray-500 mb-3">Mid-week combo deal</p>
+                            <span class="inline-block bg-eatery-yellow text-eatery-black font-bold px-4 py-2 rounded-full text-lg shadow-sm group-hover:scale-110 transition-transform">$10.00</span>
+                        </div>
+                    </div>
 
-      <div class="menu-category">
-        <h3>Coffee Selection</h3>
-        <div class="menu-item">
-          <h4>Espresso</h4>
-          <p>$3.00 - Rich and bold</p>
-        </div>
-        <div class="menu-item">
-          <h4>Latte</h4>
-          <p>$4.50 - Smooth and creamy</p>
-        </div>
-        <div class="menu-item">
-          <h4>Cappuccino</h4>
-          <p>$4.50 - Frothy and classic</p>
-        </div>
-		<div class="menu-item">
-          <h4>Volcanica Coffee</h4>
-          <p>$7.50 - Blue Mountain Coffee</p>
-        </div>
-      </div>
+                    <div class="group flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="h-80 w-full relative overflow-hidden">
+                            <img src="assets/Friday Offer.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Friday Offer" onerror="this.src='https://placehold.co/400x600?text=Friday+Offer'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="p-5 text-center flex-grow flex flex-col justify-center bg-gray-50 group-hover:bg-white transition-colors">
+                            <h4 class="font-bold text-xl font-serif text-eatery-dark mb-1">Friday Feast</h4>
+                            <p class="text-sm text-gray-500 mb-3">Start the weekend right</p>
+                            <span class="inline-block bg-eatery-yellow text-eatery-black font-bold px-4 py-2 rounded-full text-lg shadow-sm group-hover:scale-110 transition-transform">$12.50</span>
+                        </div>
+                    </div>
 
-      <div class="menu-category">
-        <h3>Tea Varieties</h3>
-        <div class="menu-item">
-          <h4>Green Tea</h4>
-          <p>$3.00 - Refreshing and light</p>
-        </div>
-        <div class="menu-item">
-          <h4>Black Tea</h4>
-          <p>$3.00 - Robust and invigorating</p>
-        </div>
-        <div class="menu-item">
-          <h4>Herbal Infusion</h4>
-          <p>$3.50 - Soothing and aromatic</p>
-        </div>
-        <div class="menu-item">
-          <h4>Milk Tea</h4>
-          <p>$2.50 - Tanduri Matka</p>
-        </div>
-      </div>
+                    <div class="group flex flex-col bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                        <div class="h-80 w-full relative overflow-hidden">
+                            <img src="assets/SaturdayOffer.jpg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt="Saturday Offer" onerror="this.src='https://placehold.co/400x600?text=Saturday+Offer'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="p-5 text-center flex-grow flex flex-col justify-center bg-gray-50 group-hover:bg-white transition-colors">
+                            <h4 class="font-bold text-xl font-serif text-eatery-dark mb-1">Saturday Special</h4>
+                            <p class="text-sm text-gray-500 mb-3">Ultimate weekend treat</p>
+                            <span class="inline-block bg-eatery-yellow text-eatery-black font-bold px-4 py-2 rounded-full text-lg shadow-sm group-hover:scale-110 transition-transform">$15.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="menu-category">
-        <h3>Sandwiches</h3>
-        <div class="menu-item">
-          <h4>Classic Club</h4>
-          <p>$7.50 - Ham and cheese</p>
-        </div>
-        <div class="menu-item">
-          <h4>Veggie Wrap</h4>
-          <p>$6.50 - Fresh garden vegetables</p>
-        </div>
-        <div class="menu-item">
-          <h4>Grilled Cheese</h4>
-          <p>$5.00 - Warm and comforting</p>
-        </div>
-		<div class="menu-item">
-          <h4>Muffaletta Sandwiches</h4>
-          <p>$4.70 - Sicilian Muffaletta Sandwiche</p>
-        </div>
-      </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-serif font-bold mb-6 text-yellow-600 flex items-center gap-2"><i data-lucide="coffee"></i> Coffee</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Espresso</h4><p class="text-sm text-gray-500">Rich and bold</p></div><span class="font-bold text-yellow-600">$3.00</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Latte</h4><p class="text-sm text-gray-500">Smooth and creamy</p></div><span class="font-bold text-yellow-600">$4.50</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Cappuccino</h4><p class="text-sm text-gray-500">Frothy and classic</p></div><span class="font-bold text-yellow-600">$4.50</span></div>
+                    <div class="flex justify-between"><div><h4 class="font-bold">Volcanica Coffee</h4><p class="text-sm text-gray-500">Blue Mountain Coffee</p></div><span class="font-bold text-yellow-600">$7.50</span></div>
+                </div>
+            </div>
 
-      <div class="menu-category">
-        <h3>Cakes & Pastries</h3>
-        <div class="menu-item">
-          <h4>Chocolate Fudge Cake</h4>
-          <p>$5.50 - Decadent and rich</p>
-        </div>
-        <div class="menu-item">
-          <h4>Carrot Cake</h4>
-          <p>$5.00 - Moist with cream cheese frosting</p>
-        </div>
-        <div class="menu-item">
-          <h4>Blueberry Muffin</h4>
-          <p>$3.00 - Freshly baked daily</p>
-        </div>
-        <div class="menu-item">
-          <h4>Kalb-el-louz</h4>
-          <p>$2.00 - Originating from Algeria</p>
-        </div>
-      </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-serif font-bold mb-6 text-green-600 flex items-center gap-2"><i data-lucide="leaf"></i> Tea</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Green Tea</h4><p class="text-sm text-gray-500">Refreshing and light</p></div><span class="font-bold text-yellow-600">$3.00</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Black Tea</h4><p class="text-sm text-gray-500">Robust</p></div><span class="font-bold text-yellow-600">$3.00</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Herbal Infusion</h4><p class="text-sm text-gray-500">Soothing</p></div><span class="font-bold text-yellow-600">$3.50</span></div>
+                    <div class="flex justify-between"><div><h4 class="font-bold">Milk Tea</h4><p class="text-sm text-gray-500">Tanduri Matka</p></div><span class="font-bold text-yellow-600">$2.50</span></div>
+                </div>
+            </div>
 
-    </div>
-  </main>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-serif font-bold mb-6 text-red-600 flex items-center gap-2"><i data-lucide="sandwich"></i> Sandwiches</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Classic Club</h4><p class="text-sm text-gray-500">Ham and cheese</p></div><span class="font-bold text-yellow-600">$7.50</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Veggie Wrap</h4><p class="text-sm text-gray-500">Fresh vegetables</p></div><span class="font-bold text-yellow-600">$6.50</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Grilled Cheese</h4><p class="text-sm text-gray-500">Warm and comforting</p></div><span class="font-bold text-yellow-600">$5.00</span></div>
+                    <div class="flex justify-between"><div><h4 class="font-bold">Muffaletta</h4><p class="text-sm text-gray-500">Sicilian style</p></div><span class="font-bold text-yellow-600">$4.70</span></div>
+                </div>
+            </div>
 
-  <footer>
-    <h1>Follow Us</h1>
-    <ul>
-      <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
-      <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
-      <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
-    </ul>
-    <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
-  </footer>
+            <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition-shadow">
+                <h3 class="text-2xl font-serif font-bold mb-6 text-pink-600 flex items-center gap-2"><i data-lucide="cake"></i> Cakes & Pastries</h3>
+                <div class="space-y-4">
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Chocolate Fudge</h4><p class="text-sm text-gray-500">Decadent and rich</p></div><span class="font-bold text-yellow-600">$5.50</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Carrot Cake</h4><p class="text-sm text-gray-500">Cream cheese frosting</p></div><span class="font-bold text-yellow-600">$5.00</span></div>
+                    <div class="flex justify-between border-b border-gray-100 pb-2"><div><h4 class="font-bold">Blueberry Muffin</h4><p class="text-sm text-gray-500">Freshly baked</p></div><span class="font-bold text-yellow-600">$3.00</span></div>
+                    <div class="flex justify-between"><div><h4 class="font-bold">Kalb-el-louz</h4><p class="text-sm text-gray-500">Algerian classic</p></div><span class="font-bold text-yellow-600">$2.00</span></div>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <!-- Bootstrap JS Bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center">
+        <h1 class="text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
+        </ul>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
 
+    <script>lucide.createIcons();</script>
 </body>
-
 </html>

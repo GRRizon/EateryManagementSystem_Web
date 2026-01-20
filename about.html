@@ -1,217 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About - Eatery Management System</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #ffcc00;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    header img {
-      width: 120px;
-      height: auto;
-    }
-
-    nav {
-      margin-top: 20px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 18px;
-      padding: 8px 16px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #333;
-      color: #fff;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-top: 20px;
-    }
-
-    main {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    main p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 40px;
-    }
-
-    .image-gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-
-    .image-gallery img {
-      width: 45%;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s;
-      cursor: pointer;
-    }
-
-    .image-gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .founder-section {
-      margin-top: 50px;
-      text-align: center;
-    }
-
-    .founder-section img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .founder-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .founder-section p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      line-height: 1.6;
-    }
-
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 30px 0;
-      margin-top: 40px;
-    }
-
-    footer h3 {
-      font-size: 20px;
-      margin-bottom: 15px;
-    }
-
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 15px;
-    }
-
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    footer ul li a:hover {
-      color: #ffcc00;
-    }
-
-    footer p {
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .image-gallery img {
-        width: 90%;
-      }
-
-      header h1 {
-        font-size: 32px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Eatery</title>
+	<link rel="icon" type="image/png" href="assets/Eatery Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: { extend: { colors: { eatery: { yellow: '#f1c40f', header: '#ffcc00', black: '#333333', gray: '#f4f4f4' } }, fontFamily: { sans: ['Roboto'], serif: ['Playfair Display'] } } }
+        }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen">
 
-<body>
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="assets/Eatery Logo.png" alt="Logo" class="w-12" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                <h1 class="font-bold text-2xl font-serif">About Us</h1>
+            </div>
+            <nav class="hidden md:flex space-x-2">
+                <a href="index.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Home</a>
+                <a href="menu.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Menu</a>
+                <a href="Order.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Order</a>
+                <a href="about.html" class="px-3 py-2 font-bold rounded bg-black/10 text-white">About</a>
+                <a href="contact.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Contact</a>
+            </nav>
+            <button onclick="document.getElementById('mMenu').classList.toggle('hidden')" class="md:hidden"><i data-lucide="menu"></i></button>
+        </div>
+        <div id="mMenu" class="hidden md:hidden bg-eatery-header px-4 pb-4 border-t border-black/10">
+            <a href="index.html" class="block py-2 font-bold">Home</a>
+            <a href="menu.html" class="block py-2 font-bold">Menu</a>
+            <a href="Order.html" class="block py-2 font-bold">Order</a>
+            <a href="about.html" class="block py-2 font-bold bg-black/10 rounded px-2">About</a>
+            <a href="contact.html" class="block py-2 font-bold">Contact</a>
+        </div>
+    </header>
 
-  <header>
-    <img src="Eatery Logo.png" alt="Eatery Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="menu.html">Menu</a>
-      <a href="order.html">Order</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <h1>About Us</h1>
-  </header>
+    <main class="max-w-4xl mx-auto px-4 py-12 w-full text-center">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-gray-100">
+            <p class="text-xl text-gray-700 leading-relaxed mb-10">
+                <strong>Founded in 2025</strong>, Eatery is a cozy spot where good food meets great company.
+                We believe in fresh ingredients, friendly service, and creating moments that matter.
+            </p>
 
-  <main>
-    <p>
-      <strong>Founded in 2025</strong>, Eatery is a cozy spot where good food meets great company.
-      We believe in fresh ingredients, friendly service, and creating moments that matter.
-    </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <img src="assets/Interior 1.jpg" alt="Interior" class="rounded-xl shadow-md w-full h-64 object-cover hover:scale-105 transition transform" onerror="this.src='https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500'">
+                <img src="assets/Interior 2.jpg" alt="Interior" class="rounded-xl shadow-md w-full h-64 object-cover hover:scale-105 transition transform" onerror="this.src='https://images.unsplash.com/photo-1559339352-11d035aa65de?w=500'">
+            </div>
 
-    <div class="image-gallery">
-      <img src="Interior 1.jpg" alt="Eatery Interior">
-      <img src="Interior 2.jpg" alt="Eatery Interior">
-    </div>
+            <div class="flex flex-col items-center">
+                <img src="assets/Founder.jpg" alt="MD. Golam Rabbani" class="w-40 h-40 rounded-full border-4 border-eatery-header shadow-lg mb-4 object-cover" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400'">
+                <h2 class="text-3xl font-serif font-bold mb-2">MD. Golam Rabbani</h2>
+                <p class="text-gray-600 max-w-2xl">
+                    The visionary behind Eatery, started this journey with a passion for great food and excellent customer service.
+                    His mission is to create a place where people can enjoy fresh, high-quality meals in a warm environment.
+                </p>
+            </div>
+        </div>
+    </main>
 
-    <div class="founder-section">
-      <img src="Founder.jpg" alt="Founder Image">
-      <h2>MD. Golam Rabbani</h2>
-      <p>
-        MD. Golam Rabbani, the visionary behind Eatery, started this journey with a passion for great food and excellent customer service.
-        His mission is to create a place where people can enjoy fresh, high-quality meals in a warm and welcoming environment.
-      </p>
-    </div>
-  </main>
-
-  <footer>
-        <h1>Follow Us</h1>
-        <ul>
-            <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
-            <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
-            <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+    <!-- Updated Footer -->
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center">
+        <h1 class="text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
         </ul>
-        <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
     </footer>
-
+    <script>lucide.createIcons();</script>
 </body>
-
 </html>

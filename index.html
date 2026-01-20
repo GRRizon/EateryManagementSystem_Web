@@ -1,189 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Eatery Management System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/Eatery Logo.png">
 
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f8f8f8;
-            color: #333;
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        eatery: {
+                            yellow: '#f1c40f', 
+                            yellowHover: '#d4ac0d',
+                            header: '#ffcc00', 
+                            dark: '#2c3e50',
+                            light: '#ffffff',
+                            gray: '#f4f4f4', 
+                            black: '#333333', 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
         }
-
-        header {
-            background-color: #ffcc00;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        header img {
-            width: 120px;
-            height: auto;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            margin: 10px 0;
-        }
-
-        header p {
-            font-size: 18px;
-            margin: 0 20px 30px;
-            line-height: 1.5;
-        }
-
-        .highlight h3 {
-            text-align: center;
-            font-size: 36px;
-            margin-bottom: 40px;
-        }
-
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .card img:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 15px;
-        }
-
-        footer ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        footer ul li a:hover {
-            color: #ffcc00;
-        }
-    </style>
+    </script>
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen font-sans pb-20"> <!-- Added pb-20 for bottom bar space -->
 
-<body>
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-3 md:py-4">
+                <a href="index.html" class="flex items-center gap-2 md:gap-3 cursor-pointer group hover:opacity-95 transition-opacity">
+                    <img src="assets/Eatery Logo.png" alt="Eatery Logo" class="w-10 h-auto md:w-12 max-w-full object-contain" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                    <div class="flex flex-col">
+                        <h1 class="font-bold text-xl md:text-2xl font-serif leading-none tracking-wide text-eatery-black">Eatery</h1>
+                        <p class="text-[10px] md:text-xs font-medium opacity-80 mt-1 text-eatery-black hidden sm:block">Fresh coffee, tasty food.</p>
+                    </div>
+                </a>
 
-    <header>
-        <img src="Eatery Logo.png" alt="Eatery Logo">
-        <h1>Welcome to Eatery</h1>
-        <p>Fresh coffee, tasty food, and warm vibes await you.</p>
+                <nav class="hidden md:flex space-x-2 items-center">
+                    <a href="index.html" class="px-3 py-2 font-bold rounded-md bg-black/10 text-white">Home</a>
+                    <a href="menu.html" class="px-3 py-2 font-bold rounded-md hover:bg-black/10 transition-colors">Menu</a>
+                    <a href="Order.html" class="px-3 py-2 font-bold rounded-md hover:bg-black/10 transition-colors">Order</a>
+                    <a href="about.html" class="px-3 py-2 font-bold rounded-md hover:bg-black/10 transition-colors">About</a>
+                    <a href="contact.html" class="px-3 py-2 font-bold rounded-md hover:bg-black/10 transition-colors">Contact</a>
+                </nav>
 
-        <!-- Bootstrap Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <div class="hidden md:flex items-center gap-4">
+    <a href="UserProfile.html" class="flex items-center gap-2 group cursor-pointer">
+        <div class="w-10 h-10 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center group-hover:border-eatery-yellow transition-colors shadow-sm">
+            <i data-lucide="user" class="w-5 h-5 text-eatery-black"></i>
+        </div>
+        <div class="flex flex-col">
+            <span class="text-sm font-bold text-eatery-black leading-none group-hover:text-eatery-yellowHover transition-colors">User</span>
+        </div>
+    </a>
+
+    <a href="Professional Layout.html" class="bg-eatery-black text-white px-5 py-2 rounded-lg text-sm font-bold hover:bg-gray-800 transition-colors shadow-lg flex items-center gap-2">
+        <i data-lucide="log-out" class="w-4 h-4"></i>
+        Log Out
+    </a>
+</div>
+
+                <button onclick="document.getElementById('mobileMenu').classList.toggle('hidden')" class="md:hidden p-2 text-eatery-black focus:outline-none">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
                 </button>
-                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="menu.html">Menu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="order.html">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold" href="contact.html">Contact</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </nav>
+        </div>
+        
+        <div id="mobileMenu" class="hidden md:hidden bg-eatery-header border-t border-black/10 p-4 space-y-2 shadow-lg">
+            <a href="index.html" class="block px-4 py-3 font-bold bg-black/10 rounded">Home</a>
+            <a href="menu.html" class="block px-4 py-3 font-bold hover:bg-black/5 rounded">Menu</a>
+            <a href="Order.html" class="block px-4 py-3 font-bold hover:bg-black/5 rounded">Order</a>
+            <a href="about.html" class="block px-4 py-3 font-bold hover:bg-black/5 rounded">About</a>
+            <a href="contact.html" class="block px-4 py-3 font-bold hover:bg-black/5 rounded">Contact</a>
+            <a href="LogIn.html" class="block px-4 py-3 font-bold bg-eatery-black text-white rounded text-center mt-2">Log In</a>
+        </div>
     </header>
 
-    <main>
-        <section class="highlight container my-5">
-            <h3>Our Specialties</h3>
-            <div class="row g-4">
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full">
+        
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-5xl font-bold font-serif mb-4">Our Specialties</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto text-lg">Select multiple items below and click "Proceed to Order".</p>
+        </div>
 
-                <!-- Coffee -->
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100 text-center p-3 shadow-sm">
-                        <h4>Fresh Brewed Coffee</h4>
-                        <a href="order.html"><img src="Espresso coffee.jpg" alt="Espresso Coffee" class="mb-3"></a>
-                        <a href="order.html"><img src="Latte coffee.jpg" alt="Latte Coffee" class="mb-3"></a>
-                        <a href="order.html"><img src="Cappuccino coffee.jpg" alt="Cappuccino Coffee" class="mb-3"></a>
-						<a href="order.html"><img src="Jamaican blue mountain coffee.jpg" alt="Volcanica Coffee, Jamaica" class="mb-3"></a>
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 1. Coffee Column -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow h-full">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                    <div class="p-2 bg-yellow-100 rounded-full text-yellow-700"><i data-lucide="coffee" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold font-serif text-eatery-dark">Fresh Coffee</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent" onclick="toggleSelection('Espresso', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Espresso coffee.jpg" alt="Espresso Coffee" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1510707577719-2b957dc2a6c1?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Espresso</h5>
+                            <span class="text-eatery-yellowHover font-bold">$3.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Rich and bold flavor.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Latte', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Latte coffee.jpg" alt="Latte Coffee" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1570968992193-96ab7d430b97?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Latte</h5>
+                            <span class="text-eatery-yellowHover font-bold">$4.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Smooth and creamy.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Cappuccino', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Cappuccino coffee.jpg" alt="Cappuccino Coffee" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Cappuccino</h5>
+                            <span class="text-eatery-yellowHover font-bold">$4.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Frothy and classic.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Volcanica Coffee', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Jamaican blue mountain coffee.jpg" alt="Volcanica Coffee" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Volcanica</h5>
+                            <span class="text-eatery-yellowHover font-bold">$7.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Blue Mountain Coffee.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
                     </div>
                 </div>
-
-                <!-- Tea -->
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100 text-center p-3 shadow-sm">
-                        <h4>Assorted Teas</h4>
-                        <a href="order.html"><img src="Green tea.jpg" alt="Green Tea" class="mb-3"></a>
-                        <a href="order.html"><img src="Black tea.jpeg" alt="Black Tea" class="mb-3"></a>
-                        <a href="order.html"><img src="Herbal tea.jpg" alt="Herbal Tea" class="mb-3"></a>
-                        <a href="order.html"><img src="MilkTea.jpg" alt="Milk Tea" class="mb-3"></a>
-                    </div>
-                </div>
-
-                <!-- Sandwiches -->
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100 text-center p-3 shadow-sm">
-                        <h4>Gourmet Sandwiches</h4>
-                        <a href="order.html"><img src="Sandwich hum.jpg" alt="Ham Sandwich" class="mb-3"></a>
-                        <a href="order.html"><img src="Veg Sandwiche.jpg" alt="Vegetarian Sandwich" class="mb-3"></a>
-                        <a href="order.html"><img src="Grilled Sandwiche.jpg" alt="Grilled Sandwich" class="mb-3"></a>
-						<a href="order.html"><img src="Muffaletta-sandwiches.jpg" alt="Muffaletta Sandwiches" class="mb-3"></a>
-                    </div>
-                </div>
-
-                <!-- Cakes -->
-                <div class="col-12 col-md-6 col-lg-3">
-                    <div class="card h-100 text-center p-3 shadow-sm">
-                        <h4>Cakes & Pastries</h4>
-                        <a href="order.html"><img src="Cake home.jpg" alt="Cake" class="mb-3"></a>
-                        <a href="order.html"><img src="Carrot cake.jpg" alt="Carrot Cake" class="mb-3"></a>
-                        <a href="order.html"><img src="Blueberry Muffin Cake.jpg" alt="Blueberry Muffin Cake" class="mb-3"></a>
-                        <a href="order.html"><img src="Kalb-el-louz.jpg" alt="Kalb-el-louz Cake" class="mb-3"></a>
-                    </div>
-                </div>
-
             </div>
-        </section>
+
+            <!-- 2. Tea Column -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow h-full">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                    <div class="p-2 bg-green-100 rounded-full text-green-700"><i data-lucide="leaf" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold font-serif text-eatery-dark">Assorted Teas</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent" onclick="toggleSelection('Green Tea', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Green tea.jpg" alt="Green Tea" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1627435601361-ec25f5b1d0e5?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Green Tea</h5>
+                            <span class="text-eatery-yellowHover font-bold">$3.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Refreshing and light.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Black Tea', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Black tea.jpeg" alt="Black Tea" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Black Tea</h5>
+                            <span class="text-eatery-yellowHover font-bold">$3.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Robust and invigorating.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Herbal Infusion', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Herbal tea.jpg" alt="Herbal Tea" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Herbal Infusion</h5>
+                            <span class="text-eatery-yellowHover font-bold">$3.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Soothing and aromatic.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Milk Tea', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/MilkTea.jpg" alt="Milk Tea" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1558160074-4d7d8bdf4256?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Milk Tea</h5>
+                            <span class="text-eatery-yellowHover font-bold">$2.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Tanduri Matka style.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sandwiches Column -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow h-full">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                    <div class="p-2 bg-red-100 rounded-full text-red-700"><i data-lucide="sandwich" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold font-serif text-eatery-dark">Sandwiches</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent" onclick="toggleSelection('Classic Club', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Sandwich hum.jpg" alt="Ham Sandwich" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1553909489-cd47e3b4430f?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Classic Club</h5>
+                            <span class="text-eatery-yellowHover font-bold">$7.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Ham and cheese delight.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Veggie Wrap', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Veg Sandwiche.jpg" alt="Veg Sandwich" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Veggie Wrap</h5>
+                            <span class="text-eatery-yellowHover font-bold">$6.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Fresh garden vegetables.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Grilled Cheese', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Grilled Sandwiche.jpg" alt="Grilled Sandwich" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Grilled Cheese</h5>
+                            <span class="text-eatery-yellowHover font-bold">$5.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Warm and comforting.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Muffaletta Sandwiches', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Muffaletta-sandwiches.jpg" alt="Muffaletta" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1626078436812-70659a72b53b?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Muffaletta</h5>
+                            <span class="text-eatery-yellowHover font-bold">$4.70</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Sicilian style sandwich.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Cakes Column -->
+            <div class="bg-white p-6 rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-shadow h-full">
+                <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                    <div class="p-2 bg-pink-100 rounded-full text-pink-700"><i data-lucide="cake" class="w-6 h-6"></i></div>
+                    <h3 class="text-xl font-bold font-serif text-eatery-dark">Cakes & Pastries</h3>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent" onclick="toggleSelection('Chocolate Fudge Cake', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Cake home.jpg" alt="Cake" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Chocolate Fudge</h5>
+                            <span class="text-eatery-yellowHover font-bold">$5.50</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Decadent and rich.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Carrot Cake', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Carrot cake.jpg" alt="Carrot Cake" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1621303837174-89787a7d4729?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Carrot Cake</h5>
+                            <span class="text-eatery-yellowHover font-bold">$5.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Cream cheese frosting.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Blueberry Muffin', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Blueberry Muffin Cake.jpg" alt="Blueberry Muffin" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1563153434-a2563d77292d?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Blueberry Muffin</h5>
+                            <span class="text-eatery-yellowHover font-bold">$3.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Freshly baked daily.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="group product-card cursor-pointer p-2 rounded-lg transition-all border-2 border-transparent border-t border-gray-50 pt-4" onclick="toggleSelection('Kalb-el-lou Cake', this)">
+                        <div class="block overflow-hidden rounded-lg mb-3">
+                            <img src="assets/Kalb-el-louz.jpg" alt="Kalb-el-louz" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='https://images.unsplash.com/photo-1605292356183-a77d0a9c9d1d?w=400'">
+                        </div>
+                        <div class="flex justify-between items-start mb-1">
+                            <h5 class="font-bold text-eatery-black text-base">Kalb-el-louz</h5>
+                            <span class="text-eatery-yellowHover font-bold">$2.00</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-2">Classic Algerian sweet.</p>
+                        <button class="w-full text-xs font-bold text-white bg-eatery-black py-2 rounded uppercase tracking-wide select-btn">Add to Order</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <footer>
-        <h1>Follow Us</h1>
-        <ul>
-            <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
-            <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
-            <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
+    <!-- Floating Checkout Bar -->
+    <div id="checkoutBar" class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-2xl p-4 flex justify-between items-center transform translate-y-full transition-transform duration-300 z-50">
+        <div>
+            <span class="font-bold text-lg" id="itemCount">0 items selected</span>
+            <p class="text-xs text-gray-500">Continue to finalize your order</p>
+        </div>
+        <button onclick="proceedToCheckout()" class="bg-eatery-yellow text-eatery-black px-6 py-3 rounded-lg font-bold hover:bg-eatery-yellowHover shadow-md">
+            Proceed to Order &rarr;
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center px-4">
+        <h1 class="text-xl md:text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="hover:text-eatery-header transition-colors flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
         </ul>
-        <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
     </footer>
 
-</body>
+    <script>
+        lucide.createIcons();
+        
+        const selectedProducts = new Set();
 
+        function toggleSelection(productName, element) {
+            const btn = element.querySelector('.select-btn');
+            
+            if (selectedProducts.has(productName)) {
+                // Deselect
+                selectedProducts.delete(productName);
+                element.classList.remove('border-eatery-yellow', 'bg-yellow-50');
+                element.classList.add('border-transparent');
+                btn.textContent = "Add to Order";
+                btn.classList.remove('bg-green-600');
+                btn.classList.add('bg-eatery-black');
+            } else {
+                // Select
+                selectedProducts.add(productName);
+                element.classList.remove('border-transparent');
+                element.classList.add('border-eatery-yellow', 'bg-yellow-50');
+                btn.textContent = "Selected";
+                btn.classList.remove('bg-eatery-black');
+                btn.classList.add('bg-green-600');
+            }
+            updateCheckoutBar();
+        }
+
+        function updateCheckoutBar() {
+            const bar = document.getElementById('checkoutBar');
+            const countText = document.getElementById('itemCount');
+            
+            if (selectedProducts.size > 0) {
+                bar.classList.remove('translate-y-full');
+                countText.textContent = `${selectedProducts.size} item${selectedProducts.size !== 1 ? 's' : ''} selected`;
+            } else {
+                bar.classList.add('translate-y-full');
+            }
+        }
+
+        function proceedToCheckout() {
+            const productsArray = Array.from(selectedProducts);
+            // Encode comma-separated list
+            const queryString = `?products=${encodeURIComponent(productsArray.join(','))}`;
+            window.location.href = 'Order.html' + queryString;
+        }
+    </script>
+</body>
 </html>

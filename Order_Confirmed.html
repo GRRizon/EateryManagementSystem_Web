@@ -1,196 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Order Confirmation - Eatery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    header {
-      background-color: #ffcc00;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    header img {
-      width: 120px;
-      height: auto;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-top: 20px;
-    }
-
-    main {
-      flex: 1;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    .confirmation-message {
-      font-size: 24px;
-      color: green;
-      margin-bottom: 20px;
-    }
-
-    .order-summary {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      text-align: left;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .return-button {
-      background-color: #ffcc00;
-      border: none;
-      color: #333;
-      padding: 14px 30px;
-      font-size: 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      display: inline-block;
-      margin-top: 10px;
-    }
-
-    .return-button:hover {
-      background-color: #e6b800;
-    }
-
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 40px;
-    }
-
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 32px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      main {
-        margin: 20px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <img src="Eatery Logo.png" alt="Eatery Logo" />
-    <h1>Order Confirmation</h1>
-  </header>
-
-  <main>
-    <div class="confirmation-message">
-      🎉 Thank you! Your order has been successfully placed.
-    </div>
-
-    <div class="order-summary" id="order-summary">
-      <!-- Order details will be injected here by JavaScript -->
-    </div>
-
-    <a href="index.html" class="return-button">Return to Home</a>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Eatery Management System</p>
-  </footer>
-
-  <script>
-    const prices = {
-      "Espresso": 3.00,
-      "Latte": 4.50,
-      "Cappuccino": 4.50,
-	  "Volcanica Coffee": 7.50,
-      "Green Tea": 3.00,
-      "Black Tea": 3.00,
-      "Herbal Infusion": 3.50,
-      "Milk Tea": 2.50,
-      "Classic Club": 7.50,
-      "Veggie Wrap": 6.50,
-      "Grilled Cheese": 5.00,
-	  "Muffaletta Sandwiches": 4.70,
-      "Chocolate Fudge Cake": 5.50,
-      "Carrot Cake": 5.00,
-      "Blueberry Muffin": 3.00,
-      "Kalb-el-lou Cake": 2.00
-    };
-
-    const params = new URLSearchParams(window.location.search);
-    const name = params.get('name') || "N/A";
-    const products = params.getAll('products[]');  // For multiple products
-    const quantities = params.getAll('quantities[]').map(q => parseInt(q) || 0);
-    const payment = params.get('payment') || "N/A";
-
-    let orderHtml = "";
-
-    // Calculate total and show each selected product with qty and price
-    let grandTotal = 0;
-    if (products.length === 0) {
-      orderHtml = "<p>No products were ordered.</p>";
-    } else {
-      orderHtml += `<p><strong>Customer Name:</strong> ${name}</p>`;
-      orderHtml += `<p><strong>Payment Method:</strong> ${payment}</p>`;
-      orderHtml += "<h3>Order Details:</h3><ul>";
-      products.forEach((product, index) => {
-        const qty = quantities[index] || 0;
-        if (qty > 0) {
-          const price = prices[product] || 0;
-          const total = price * qty;
-          grandTotal += total;
-          orderHtml += `<li>${product} - Quantity: ${qty} @ $${price.toFixed(2)} each = $${total.toFixed(2)}</li>`;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Eatery</title>
+    <link rel="icon" type="image/png" href="assets/Eatery Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { eatery: { yellow: '#f1c40f', yellowHover: '#d4ac0d', header: '#ffcc00', black: '#333333', gray: '#f4f4f4' } }, fontFamily: { sans: ['Roboto'], serif: ['Playfair Display'] } }
+            }
         }
-      });
-      orderHtml += "</ul>";
-      orderHtml += `<p><strong>Total Bill:</strong> $${grandTotal.toFixed(2)}</p>`;
-    }
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen">
 
-    document.getElementById("order-summary").innerHTML = orderHtml;
-  </script>
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md print:hidden">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="assets/Eatery Logo.png" alt="Logo" class="w-12" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                <h1 class="font-bold text-2xl font-serif">Order Confirmed</h1>
+            </div>
 
+            <button onclick="document.getElementById('mMenu').classList.toggle('hidden')" class="md:hidden"><i data-lucide="menu"></i></button>
+        </div>
+        
+        <div id="mMenu" class="hidden md:hidden bg-eatery-header px-4 pb-4 border-t border-black/10">
+            <a href="index.html" class="block py-2 font-bold">Home</a>
+            <a href="menu.html" class="block py-2 font-bold">Menu</a>
+            <a href="Order.html" class="block py-2 font-bold">Order</a>
+            <a href="about.html" class="block py-2 font-bold">About</a>
+            <a href="contact.html" class="block py-2 font-bold">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-10 w-full">
+        <div class="bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden relative">
+            
+            <div class="bg-green-600 p-8 text-center text-white">
+                <div class="bg-white text-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <i data-lucide="check" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-3xl font-bold font-serif mb-2">Order Placed Successfully!</h2>
+                <p class="opacity-90">Thank you for ordering with Eatery.</p>
+            </div>
+
+            <div id="delivery-timer" class="hidden bg-blue-50 border-b border-blue-100 p-6 text-center animate-pulse">
+                <h3 class="text-blue-800 font-bold mb-2 flex items-center justify-center gap-2 text-sm uppercase tracking-wide">
+                    <i data-lucide="clock" class="w-5 h-5"></i> Estimated Delivery Time
+                </h3>
+                <div class="text-4xl font-mono font-bold text-blue-600 mb-1" id="countdown">20:00</div>
+                <p class="text-xs text-blue-500 font-medium">Your food is being prepared and will be on its way!</p>
+            </div>
+            
+            <div class="p-8">
+                <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-6">
+                    <div>
+                        <p class="text-sm text-gray-500">Order ID</p>
+                        <p class="text-xl font-bold font-serif text-eatery-dark" id="orderId">#...</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 text-right">Date</p>
+                        <p class="font-bold" id="orderDate">...</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div>
+                        <h3 class="font-bold text-gray-500 uppercase text-xs tracking-wider mb-2">Customer Details</h3>
+                        <p class="font-bold text-lg" id="custName">Loading...</p>
+                        <p class="text-gray-600" id="custPhone">...</p>
+                        <p class="text-gray-600" id="custEmail">...</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-500 uppercase text-xs tracking-wider mb-2">Delivery/Order Info</h3>
+                        <p class="font-bold text-eatery-black" id="orderType">...</p>
+                        <p class="text-gray-600 italic mt-1" id="custAddress">...</p>
+                        <p class="mt-2 text-sm"><span class="font-bold">Payment:</span> <span id="paymentMethod">...</span></p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-4 mb-8">
+                    <h3 class="font-bold text-gray-500 uppercase text-xs tracking-wider mb-4 border-b pb-2">Items Ordered</h3>
+                    <div id="itemsList" class="space-y-3">
+                        <p class="text-center text-gray-500 italic">No items found.</p>
+                    </div>
+                    
+                    <div class="mt-4 pt-3 border-t border-gray-300 flex justify-between items-center">
+                        <span class="text-lg font-bold text-eatery-black">Total Amount</span>
+                        <span class="text-xl font-bold text-eatery-yellowHover font-mono" id="totalPrice">$0.00</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center print:hidden">
+                    <button onclick="window.print()" class="px-6 py-3 border-2 border-gray-200 rounded-lg font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                        <i data-lucide="printer" class="w-4 h-4"></i> Print Receipt
+                    </button>
+                    <a href="index.html" class="px-6 py-3 bg-eatery-header rounded-lg font-bold hover:bg-eatery-yellow transition text-center shadow-lg flex items-center justify-center gap-2">
+                        <i data-lucide="home" class="w-4 h-4"></i> Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center px-4 print:hidden">
+        <h1 class="text-xl md:text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex flex-wrap justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
+        </ul>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Database of prices (Combined standard items + specials)
+        const prices = { 
+            "Espresso": 3.00, "Latte": 4.50, "Cappuccino": 4.50, "Volcanica Coffee": 7.50, 
+            "Green Tea": 3.00, "Black Tea": 3.00, "Herbal Infusion": 3.50, "Milk Tea": 2.50, 
+            "Classic Club": 7.50, "Veggie Wrap": 6.50, "Grilled Cheese": 5.00, "Muffaletta Sandwiches": 4.70, 
+            "Chocolate Fudge Cake": 5.50, "Carrot Cake": 5.00, "Blueberry Muffin": 3.00, "Kalb-el-lou Cake": 2.00,
+            "Wednesday Wonder": 10.00, "Friday Feast": 12.50, "Saturday Special": 15.00
+        };
+
+        window.addEventListener('load', () => {
+            // 1. Set Date and Random ID
+            const date = new Date();
+            document.getElementById('orderDate').textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+            document.getElementById('orderId').textContent = '#' + Math.floor(Math.random() * 90000 + 10000);
+
+            // 2. Parse URL Parameters
+            const params = new URLSearchParams(window.location.search);
+
+            // Customer Info
+            document.getElementById('custName').textContent = params.get('name') || 'Guest';
+            document.getElementById('custPhone').textContent = params.get('phone') || 'N/A';
+            document.getElementById('custEmail').textContent = params.get('email') || '';
+            document.getElementById('paymentMethod').textContent = params.get('payment') || 'Cash';
+            
+            // Order Type & Address logic
+            const orderType = params.get('orderType') || 'Takeaway';
+            document.getElementById('orderType').textContent = orderType;
+            
+            if (orderType === 'Delivery') {
+                document.getElementById('custAddress').textContent = params.get('address') || 'No address provided';
+                
+                // Show Timer Logic
+                const timerEl = document.getElementById('delivery-timer');
+                const countdownEl = document.getElementById('countdown');
+                timerEl.classList.remove('hidden');
+
+                let timeLeft = 20 * 60; // 20 minutes
+                const timerInterval = setInterval(() => {
+                    const minutes = Math.floor(timeLeft / 60);
+                    const seconds = timeLeft % 60;
+                    countdownEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                    if (timeLeft <= 0) {
+                        clearInterval(timerInterval);
+                        countdownEl.textContent = "Arriving Now!";
+                        countdownEl.classList.add('text-green-600');
+                        timerEl.classList.remove('animate-pulse');
+                    }
+                    timeLeft--;
+                }, 1000);
+
+            } else {
+                document.getElementById('custAddress').textContent = 'Pickup / Dine-in (No address required)';
+            }
+
+            // 3. Process Items & Calculate Total
+            const products = params.getAll('products[]');
+            const quantities = params.getAll('quantities[]').map(q => parseInt(q)).filter(q => !isNaN(q));
+            const listContainer = document.getElementById('itemsList');
+            let total = 0;
+
+            if (products.length > 0) {
+                listContainer.innerHTML = ''; // Clear default text
+                
+                products.forEach((prodName, index) => {
+                    const qty = quantities[index] || 1; 
+                    const price = prices[prodName] || 0;
+                    const subtotal = price * qty;
+                    total += subtotal;
+
+                    const itemRow = document.createElement('div');
+                    itemRow.className = 'flex justify-between items-center border-b border-gray-200 last:border-0 pb-2 last:pb-0';
+                    itemRow.innerHTML = `
+                        <div class="flex items-center gap-3">
+                            <div class="bg-eatery-yellow text-eatery-black font-bold w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                                ${qty}x
+                            </div>
+                            <span class="font-bold text-gray-800">${prodName}</span>
+                        </div>
+                        <span class="font-mono font-bold text-gray-600">$${subtotal.toFixed(2)}</span>
+                    `;
+                    listContainer.appendChild(itemRow);
+                });
+
+                // Update Total Display
+                document.getElementById('totalPrice').textContent = '$' + total.toFixed(2);
+            }
+        });
+    </script>
 </body>
-
 </html>

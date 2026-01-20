@@ -1,358 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Place an Order - Eatery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-
-    header {
-      background-color: #ffcc00;
-      text-align: center;
-      padding: 20px 0;
-    }
-
-    header img {
-      width: 120px;
-      height: auto;
-    }
-	
-	 header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-top: 20px;
-    }
-
-    nav {
-      margin-top: 15px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 10px;
-      font-weight: bold;
-      font-size: 18px;
-      padding: 8px 16px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    nav a:hover {
-      background-color: #333;
-      color: #fff;
-    }
-
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 42px;
-      margin-top: 20px;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      font-size: 28px;
-      border-bottom: 2px solid #ffcc00;
-      padding-bottom: 10px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    textarea,
-    select,
-    input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-      font-size: 16px;
-    }
-
-    fieldset {
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      padding: 15px;
-      margin-top: 20px;
-    }
-
-    legend {
-      font-weight: bold;
-      font-size: 20px;
-      color: #555;
-    }
-
-    .product-item {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
-    }
-
-    .product-item label {
-      flex: 1;
-    }
-
-    .product-item input[type="number"] {
-      width: 80px;
-      margin-left: 15px;
-    }
-
-    button {
-      display: block;
-      background-color: #ffcc00;
-      border: none;
-      color: #333;
-      padding: 12px 25px;
-      font-size: 18px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 20px auto 0;
-      transition: background-color 0.3s, transform 0.2s;
-    }
-
-    button:hover {
-      background-color: #e6b800;
-      transform: scale(1.05);
-    }
-
-    footer {
-      background-color: #333;
-      color: #fff;
-      text-align: center;
-      padding: 20px 0;
-      margin-top: 40px;
-    }
-
-    footer ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-bottom: 10px;
-    }
-
-    footer ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 16px;
-      transition: color 0.3s;
-    }
-
-    footer ul li a:hover {
-      color: #ffcc00;
-    }
-
-    footer p {
-      font-size: 14px;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 32px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-
-      .product-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .product-item input[type="number"] {
-        margin: 10px 0 0 0;
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <img src="Eatery Logo.png" alt="Eatery Logo" />
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="menu.html">Menu</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <h1>Place Your Order</h1>
-  </header>
-
-  <main>
-    <h2>Customer Information</h2>
-    <form action="Order_Confirmed.html" method="get" class="order-form">
-
-      <label for="name">Full Name:</label>
-      <input type="text" id="name" name="name" required />
-
-      <label for="phone">Phone Number:</label>
-      <input type="tel" id="phone" name="phone" required />
-
-      <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" />
-
-      <label for="address">Delivery Address:</label>
-      <textarea id="address" name="address" rows="3" required></textarea>
-
-      <h2>Order Information</h2>
-
-      <fieldset>
-        <legend>Select Product & Quantity:</legend>
-
-        <!-- Product Items -->
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Espresso" /> Espresso - $3.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Latte" /> Latte - $4.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Cappuccino" /> Cappuccino - $4.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-		
-		<div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Volcanica Coffee" /> Volcanica Coffee - $7.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Green Tea" /> Green Tea - $3.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Black Tea" /> Black Tea - $3.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Herbal Infusion" /> Herbal Infusion - $3.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Milk Tea" /> Milk Tea - $2.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Classic Club" /> Classic Club - $7.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Veggie Wrap" /> Veggie Wrap - $6.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Grilled Cheese" /> Grilled Cheese - $5.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-		
-		<div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Muffaletta Sandwiches" /> Muffaletta Sandwiches - $4.70</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Chocolate Fudge Cake" /> Chocolate Fudge Cake - $5.50</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Carrot Cake" /> Carrot Cake - $5.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Blueberry Muffin" /> Blueberry Muffin - $3.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-
-        <div class="product-item">
-          <label><input type="checkbox" name="products[]" value="Kalb-el-lou Cake" /> Kalb-el-lou - $2.00</label>
-          <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled />
-        </div>
-      </fieldset>
-
-      <label for="payment">Payment Method:</label>
-      <select id="payment" name="payment" required>
-        <option value="">-- Select payment method --</option>
-        <option value="Card">Credit/Debit Card</option>
-        <option value="Bkash">Bkash</option>
-        <option value="Nagad">Nagad</option>
-        <option value="Rocket">Rocket</option>
-        <option value="Cash">Cash on Delivery</option>
-      </select>
-
-      <!-- Submit button -->
-      <button type="submit">Place Order</button>
-    </form>
-  </main>
-
-  <footer>
-    <h1>Follow Us</h1>
-    <ul>
-      <li><a href="https://www.facebook.com/G.R.REZON">Facebook</a></li>
-      <li><a href="https://www.instagram.com/g.r.rizon/">Instagram</a></li>
-      <li><a href="https://x.com/GR_Rizon">Twitter</a></li>
-    </ul>
-    <p>&copy; 2025 Eatery Management System | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    // Enable quantity input only when product checkbox is checked
-    document.querySelectorAll('.product-item').forEach(item => {
-      const checkbox = item.querySelector('input[type="checkbox"]');
-      const quantityInput = item.querySelector('input[type="number"]');
-
-      // Initialize quantity input disabled if checkbox not checked
-      quantityInput.disabled = !checkbox.checked;
-
-      checkbox.addEventListener('change', () => {
-        quantityInput.disabled = !checkbox.checked;
-        if (!checkbox.checked) {
-          quantityInput.value = '';
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order - Eatery</title>
+    <link rel="icon" type="image/png" href="assets/Eatery Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { eatery: { yellow: '#f1c40f', yellowHover: '#d4ac0d', header: '#ffcc00', black: '#333333', gray: '#f4f4f4' } }, fontFamily: { sans: ['Roboto'], serif: ['Playfair Display'] } }
+            }
         }
-      });
-    });
-  </script>
-</body>
+    </script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-eatery-gray text-eatery-black flex flex-col min-h-screen">
 
+    <header class="sticky top-0 z-50 bg-eatery-header shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+                <img src="assets/Eatery Logo.png" alt="Logo" class="w-12" onerror="this.src='https://placehold.co/48x48?text=Logo'">
+                <h1 class="font-bold text-2xl font-serif">Place Order</h1>
+            </div>
+
+            <nav class="hidden md:flex space-x-2">
+                <a href="index.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Home</a>
+                <a href="menu.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Menu</a>
+                <a href="Order.html" class="px-3 py-2 font-bold rounded bg-black/10 text-white">Order</a>
+                <a href="about.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">About</a>
+                <a href="contact.html" class="px-3 py-2 font-bold rounded hover:bg-black/10">Contact</a>
+            </nav>
+
+            <button onclick="document.getElementById('mMenu').classList.toggle('hidden')" class="md:hidden"><i data-lucide="menu"></i></button>
+        </div>
+        
+        <div id="mMenu" class="hidden md:hidden bg-eatery-header px-4 pb-4 border-t border-black/10">
+            <a href="index.html" class="block py-2 font-bold">Home</a>
+            <a href="menu.html" class="block py-2 font-bold">Menu</a>
+            <a href="Order.html" class="block py-2 font-bold bg-black/10 rounded px-2">Order</a>
+            <a href="about.html" class="block py-2 font-bold">About</a>
+            <a href="contact.html" class="block py-2 font-bold">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-10 w-full">
+        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+            <div class="bg-eatery-header p-6 text-center">
+                <h2 class="text-3xl font-bold font-serif">Order Form</h2>
+                <p class="opacity-90">Fill details to get delicious food</p>
+            </div>
+            
+            <form action="Order_Confirmed.html" method="get" class="p-8 space-y-8">
+                
+                <div>
+                    <h3 class="text-xl font-bold border-b-2 border-eatery-yellow pb-2 mb-4">Order Type</h3>
+                    <div class="flex flex-col sm:flex-row gap-4 sm:gap-8">
+                        <label class="flex items-center cursor-pointer bg-gray-50 px-4 py-3 rounded-lg border border-gray-200 hover:border-eatery-yellow transition w-full sm:w-auto">
+                            <input type="radio" name="orderType" value="Delivery" class="w-5 h-5 accent-eatery-yellow mr-3" checked onchange="toggleAddress(true)">
+                            <span class="font-bold flex items-center gap-2"><i data-lucide="truck" class="w-4 h-4"></i> Delivery</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer bg-gray-50 px-4 py-3 rounded-lg border border-gray-200 hover:border-eatery-yellow transition w-full sm:w-auto">
+                            <input type="radio" name="orderType" value="Takeaway" class="w-5 h-5 accent-eatery-yellow mr-3" onchange="toggleAddress(false)">
+                            <span class="font-bold flex items-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Takeaway</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer bg-gray-50 px-4 py-3 rounded-lg border border-gray-200 hover:border-eatery-yellow transition w-full sm:w-auto">
+                            <input type="radio" name="orderType" value="Dine-in" class="w-5 h-5 accent-eatery-yellow mr-3" onchange="toggleAddress(false)">
+                            <span class="font-bold flex items-center gap-2"><i data-lucide="utensils" class="w-4 h-4"></i> Dine-in</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold border-b-2 border-eatery-yellow pb-2 mb-4">Customer Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div><label class="block font-bold mb-2">Full Name</label><input type="text" name="name" required class="w-full px-4 py-2 border rounded focus:border-eatery-yellow outline-none"></div>
+                        <div><label class="block font-bold mb-2">Phone</label><input type="tel" name="phone" required class="w-full px-4 py-2 border rounded focus:border-eatery-yellow outline-none"></div>
+                        <div class="md:col-span-2"><label class="block font-bold mb-2">Email</label><input type="email" name="email" class="w-full px-4 py-2 border rounded focus:border-eatery-yellow outline-none"></div>
+                        <div class="md:col-span-2" id="addressField"><label class="block font-bold mb-2">Delivery Address</label><textarea name="address" rows="2" required class="w-full px-4 py-2 border rounded focus:border-eatery-yellow outline-none"></textarea></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold border-b-2 border-eatery-yellow pb-2 mb-4">Select Items</h3>
+                    <div class="bg-gray-50 p-4 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4">
+                        
+                        <div class="space-y-2 md:col-span-2 mb-2">
+                            <h4 class="font-serif font-bold text-purple-700 border-b pb-1 mb-2 flex items-center gap-2">
+                                <i data-lucide="sparkles" class="w-4 h-4"></i> Special Offers
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                <div class="product-item flex flex-col p-3 bg-white border border-purple-100 rounded-lg hover:border-purple-300 transition shadow-sm">
+                                    <label class="flex items-center cursor-pointer mb-2">
+                                        <input type="checkbox" name="products[]" value="Wednesday Wonder" class="w-5 h-5 accent-purple-600 mr-2">
+                                        <span class="font-bold text-sm">Wednesday Wonder</span>
+                                    </label>
+                                    <div class="flex justify-between items-center mt-auto">
+                                        <span class="text-xs text-gray-500">$10.00</span>
+                                        <input type="number" name="quantities[]" min="1" max="5" placeholder="Qty" disabled class="w-16 px-2 py-1 border rounded text-center text-sm">
+                                    </div>
+                                </div>
+                                <div class="product-item flex flex-col p-3 bg-white border border-purple-100 rounded-lg hover:border-purple-300 transition shadow-sm">
+                                    <label class="flex items-center cursor-pointer mb-2">
+                                        <input type="checkbox" name="products[]" value="Friday Feast" class="w-5 h-5 accent-purple-600 mr-2">
+                                        <span class="font-bold text-sm">Friday Feast</span>
+                                    </label>
+                                    <div class="flex justify-between items-center mt-auto">
+                                        <span class="text-xs text-gray-500">$12.50</span>
+                                        <input type="number" name="quantities[]" min="1" max="5" placeholder="Qty" disabled class="w-16 px-2 py-1 border rounded text-center text-sm">
+                                    </div>
+                                </div>
+                                <div class="product-item flex flex-col p-3 bg-white border border-purple-100 rounded-lg hover:border-purple-300 transition shadow-sm">
+                                    <label class="flex items-center cursor-pointer mb-2">
+                                        <input type="checkbox" name="products[]" value="Saturday Special" class="w-5 h-5 accent-purple-600 mr-2">
+                                        <span class="font-bold text-sm">Saturday Special</span>
+                                    </label>
+                                    <div class="flex justify-between items-center mt-auto">
+                                        <span class="text-xs text-gray-500">$15.00</span>
+                                        <input type="number" name="quantities[]" min="1" max="5" placeholder="Qty" disabled class="w-16 px-2 py-1 border rounded text-center text-sm">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="font-serif font-bold text-eatery-dark border-b pb-1 mb-2">Coffee</h4>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Espresso" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Espresso - $3.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Latte" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Latte - $4.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Cappuccino" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Cappuccino - $4.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Volcanica Coffee" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Volcanica Coffee - $7.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="font-serif font-bold text-eatery-dark border-b pb-1 mb-2">Tea</h4>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Green Tea" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Green Tea - $3.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Black Tea" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Black Tea - $3.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Herbal Infusion" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Herbal Infusion - $3.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Milk Tea" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Milk Tea - $2.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="font-serif font-bold text-eatery-dark border-b pb-1 mb-2">Sandwiches</h4>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Classic Club" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Classic Club - $7.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Veggie Wrap" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Veggie Wrap - $6.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Grilled Cheese" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Grilled Cheese - $5.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Muffaletta Sandwiches" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Muffaletta - $4.70</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <h4 class="font-serif font-bold text-eatery-dark border-b pb-1 mb-2">Cakes & Pastries</h4>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Chocolate Fudge Cake" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Chocolate Fudge - $5.50</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Carrot Cake" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Carrot Cake - $5.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Blueberry Muffin" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Blueberry Muffin - $3.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                            <div class="product-item flex items-center justify-between p-2 hover:bg-white rounded transition">
+                                <label class="flex items-center cursor-pointer flex-grow"><input type="checkbox" name="products[]" value="Kalb-el-lou Cake" class="w-5 h-5 accent-eatery-yellow mr-3"><span>Kalb-el-louz - $2.00</span></label>
+                                <input type="number" name="quantities[]" min="1" max="20" placeholder="Qty" disabled class="w-20 px-2 py-1 border rounded text-center bg-white">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold mb-2">Payment Method</label>
+                    <select name="payment" required class="w-full px-4 py-3 border rounded focus:border-eatery-yellow outline-none bg-white">
+                        <option value="">-- Select --</option>
+                        <option value="Card">Credit/Debit Card</option>
+                        <option value="Bkash">Bkash</option>
+                        <option value="Nagad">Nagad</option>
+                        <option value="Rocket">Rocket</option>
+                        <option value="Cash">Cash on Delivery</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="bg-eatery-header px-10 py-3 rounded-lg font-bold text-lg hover:bg-eatery-yellow hover:scale-105 transition transform shadow-md">Place Order</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-eatery-black text-white py-10 mt-auto text-center px-4">
+        <h1 class="text-xl md:text-2xl font-serif font-bold mb-6">Follow Us</h1>
+        <ul class="flex flex-wrap justify-center gap-6 mb-6">
+            <li><a href="https://www.facebook.com/G.R.REZON" class="flex items-center gap-2"><i data-lucide="facebook" class="w-5 h-5"></i> Facebook</a></li>
+            <li><a href="https://www.instagram.com/g.r.rizon/" class="flex items-center gap-2"><i data-lucide="instagram" class="w-5 h-5"></i> Instagram</a></li>
+            <li><a href="https://x.com/GR_Rizon" class="flex items-center gap-2"><i data-lucide="twitter" class="w-5 h-5"></i> Twitter</a></li>
+        </ul>
+        <p class="text-sm text-gray-400">&copy; 2025 Eatery Management System | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        document.querySelectorAll('.product-item').forEach(item => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            const qty = item.querySelector('input[type="number"]');
+            checkbox.addEventListener('change', () => {
+                qty.disabled = !checkbox.checked;
+                if(checkbox.checked) {
+                    qty.value = 1;
+                    qty.focus();
+                } else {
+                    qty.value = '';
+                }
+            });
+        });
+
+        // Toggle Address Field based on Order Type
+        function toggleAddress(isDelivery) {
+            const addressField = document.getElementById('addressField');
+            const addressInput = addressField.querySelector('textarea');
+            if (isDelivery) {
+                addressField.style.display = 'block';
+                addressInput.setAttribute('required', 'required');
+            } else {
+                addressField.style.display = 'none';
+                addressInput.removeAttribute('required');
+                addressInput.value = ''; 
+            }
+        }
+
+        // Auto-select items from URL parameters
+        window.addEventListener('load', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productSingular = params.get('product');
+            const productsPlural = params.get('products');
+            
+            let productsToSelect = [];
+            if (productSingular) productsToSelect.push(decodeURIComponent(productSingular.trim()));
+            if (productsPlural) {
+                productsToSelect = productsToSelect.concat(productsPlural.split(',').map(s => decodeURIComponent(s.trim())));
+            }
+
+            productsToSelect.forEach(productName => {
+                const checkbox = document.querySelector(`input[type="checkbox"][value="${productName}"]`);
+                if(checkbox) {
+                    checkbox.checked = true;
+                    checkbox.dispatchEvent(new Event('change'));
+                    checkbox.closest('.product-item').classList.add('bg-yellow-50', 'border-l-4', 'border-eatery-yellow');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
